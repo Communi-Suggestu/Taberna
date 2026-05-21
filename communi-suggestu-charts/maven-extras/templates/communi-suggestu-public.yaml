@@ -1,0 +1,14 @@
+apiVersion: maven.operator.io/v1alpha1
+kind: MavenRepository
+metadata:
+  name: public
+spec:
+  type: Virtual
+  virtual:
+    members:
+      {{- range .Values.repositories.hosted }}
+      - {{ .name | quote }}
+      {{- end }}
+  auth:
+    download:
+      policy: Anonymous

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: communi-suggestu-maven
+  namespace: argocd
+spec:
+  project: communi-suggestu
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: communi-suggestu-maven
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: {{ .Values.repository.url }}
+      path: communi-suggestu-charts/maven-extras
+      targetRevision: HEAD
+

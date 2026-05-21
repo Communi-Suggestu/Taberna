@@ -1,0 +1,5 @@
+repositories:
+  hosted:
+    - name: formatum-adhibe
+      storage:
+        size: 25Gi

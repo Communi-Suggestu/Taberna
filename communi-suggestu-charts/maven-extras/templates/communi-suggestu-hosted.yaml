@@ -1,0 +1,22 @@
+{{ range $index, $repository := .Values.repositories.hosted }}
+apiVersion: maven.operator.io/v1alpha1
+kind: MavenRepository
+metadata:
+  name: {{ $repository.name }}
+spec:
+  type: Hosted
+  storage:
+    size: {{ $repository.storage.size }}
+  auth:
+    download:
+      policy: Anonymous          
+    upload:
+      policy: Authenticated
+      users:
+        - secretRef: credentials-orion
+          role: Admin
+      ciTrust:
+        - platform: GitHubActions
+          claims:
+            repository_owner: communi-suggestu
+{{ end }}

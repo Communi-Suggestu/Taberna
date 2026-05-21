@@ -1,0 +1,5 @@
+apiVersion: v2
+name: maven-extras
+description: The maven resources for the communi suggestu maven
+type: application
+version: 1.0.0
