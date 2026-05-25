@@ -17,6 +17,7 @@ spec:
     certManager:
       issuerName: letsencrypt-production
       isClusterIssuer: true
+      renewBefore: "1440h"
     hostname: {{ $.Values.gateway.domain }}
     routeAnnotations:
       external-dns.alpha.kubernetes.io/target: "cluster.ldtteam.com"
