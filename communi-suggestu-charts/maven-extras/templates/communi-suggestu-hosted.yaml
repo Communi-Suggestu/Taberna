@@ -7,9 +7,30 @@ spec:
   type: Hosted
   storage:
     size: {{ $repository.storage.size }}
+  gateway:
+    enabled: true
+    gatewayRef:
+      name: traefik-gateway
+      namespace: traefik
+    certManager:
+      issuerName: letsencrypt-production
+      isClusterIssuer: true
+      renewBefore: "1440h"
+    hostname: {{ $repository.name }}.{{ $.Values.gateway.domain }}
+    extensionRefs:
+      - group: traefik.io
+        kind: Middleware
+        name: waf-crs
   auth:
     download:
-      policy: Anonymous          
+      policy: Authenticated
+      users:
+        - secretRef: credentials-orion
+          role: Admin
+      ciTrust:
+        - platform: GitHubActions
+          claims:
+            repository_owner: communi-suggestu
     upload:
       policy: Authenticated
       users:
