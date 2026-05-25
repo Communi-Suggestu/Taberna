@@ -9,6 +9,21 @@ spec:
       {{- range .Values.repositories.hosted }}
       - {{ .name | quote }}
       {{- end }}
+  gateway:
+    enabled: true
+    gatewayRef:
+      name: traefik-gateway
+      namespace: traefik
+    certManager:
+      issuerName: letsencrypt-production
+      isClusterIssuer: true
+    hostname: {{ $.Values.gateway.domain }}
+    routeAnnotations:
+      external-dns.alpha.kubernetes.io/target: "cluster.ldtteam.com"
   auth:
     download:
       policy: Anonymous
+    upload:
+      policy: Authenticated
+      users: []
+    

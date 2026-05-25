@@ -1,3 +1,6 @@
+gateway:
+  domain: maven.communi-suggestu.ldtteam.com
+
 repositories:
   hosted:
     - name: formatum-adhibe

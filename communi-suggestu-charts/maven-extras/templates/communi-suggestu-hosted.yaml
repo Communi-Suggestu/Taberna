@@ -7,6 +7,17 @@ spec:
   type: Hosted
   storage:
     size: {{ $repository.storage.size }}
+  gateway:
+    enabled: true
+    gatewayRef:
+      name: traefik-gateway
+      namespace: traefik
+    certManager:
+      issuerName: letsencrypt-production
+      isClusterIssuer: true
+    hostname: {{ $repository.name }}.{{ $.Values.gateway.domain }}
+    routeAnnotations:
+      external-dns.alpha.kubernetes.io/target: "cluster.ldtteam.com"
   auth:
     download:
       policy: Anonymous          
