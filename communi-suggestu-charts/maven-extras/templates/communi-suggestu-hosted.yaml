@@ -23,14 +23,7 @@ spec:
         name: waf-crs
   auth:
     download:
-      policy: Authenticated
-      users:
-        - secretRef: credentials-orion
-          role: Admin
-      ciTrust:
-        - platform: GitHubActions
-          claims:
-            repository_owner: communi-suggestu
+      policy: Anonymous          
     upload:
       policy: Authenticated
       users:
