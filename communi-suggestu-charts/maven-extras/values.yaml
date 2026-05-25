@@ -1,5 +1,5 @@
 gateway:
-  domain: maven.communi-suggestu.ldtteam.com
+  domain: maven.communi-suggestu.com
 
 repositories:
   hosted:
