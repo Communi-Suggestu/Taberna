@@ -17,10 +17,6 @@ spec:
       isClusterIssuer: true
       renewBefore: "1440h"
     hostname: {{ $.Values.gateway.domain }}
-    extensionRefs:
-      - group: traefik.io
-        kind: Middleware
-        name: waf-crs
   auth:
     download:
       policy: Anonymous          
