@@ -16,7 +16,7 @@ spec:
       issuerName: letsencrypt-production
       isClusterIssuer: true
       renewBefore: "1440h"
-    hostname: {{ $repository.name }}.{{ $.Values.gateway.domain }}
+    hostname: {{ $.Values.gateway.domain }}
     extensionRefs:
       - group: traefik.io
         kind: Middleware
