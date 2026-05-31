@@ -9,8 +9,7 @@ spec:
     size: {{ $repository.storage.size }}
   ingress:
     enabled: true
-    host: {{ $.Values.gateway.domain }}
-    path: "/"
+    host: hosted.{{ $.Values.gateway.domain }}
     certManager:
       issuerName: letsencrypt-production
       isClusterIssuer: true
