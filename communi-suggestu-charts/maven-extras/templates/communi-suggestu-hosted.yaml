@@ -10,6 +10,7 @@ spec:
   ingress:
     enabled: true
     host: {{ $.Values.gateway.domain }}
+    path: "/"
     certManager:
       issuerName: letsencrypt-production
       isClusterIssuer: true
