@@ -7,16 +7,17 @@ spec:
   type: Hosted
   storage:
     size: {{ $repository.storage.size }}
-  gateway:
+  ingress:
     enabled: true
-    gatewayRef:
-      name: traefik-gateway
-      namespace: traefik
+    host: {{ $.Values.gateway.domain }}
     certManager:
       issuerName: letsencrypt-production
       isClusterIssuer: true
       renewBefore: "1440h"
-    hostname: {{ $.Values.gateway.domain }}
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-dns
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      external-dns.alpha.kubernetes.io/target: "cluster.ldtteam.com"
   auth:
     download:
       policy: Anonymous          
