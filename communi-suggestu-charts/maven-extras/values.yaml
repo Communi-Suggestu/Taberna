@@ -6,3 +6,7 @@ repositories:
     - name: formatum-adhibe
       storage:
         size: 25Gi
+    - name: compact-machines
+      storage:
+        size: 10Gi
+        
