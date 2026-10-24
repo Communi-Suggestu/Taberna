@@ -8,7 +8,7 @@ spec:
   storage:
     size: {{ $repository.storage.size }}
   ingress:
-    enabled: true
+    enabled: false
     host: {{ $.Values.gateway.domain }}
     certManager:
       issuerName: letsencrypt-dns

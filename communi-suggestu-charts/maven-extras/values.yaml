@@ -1,5 +1,5 @@
 gateway:
-  domain: maven.communi-suggestu.com
+  domain: registry.communi-suggestu.com
 
 repositories:
   hosted:
